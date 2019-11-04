@@ -1,0 +1,22 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  # prod doesn't have the test files / .client is build context
+  - docker build -t stoptime9/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true USERNAME/react-test yarn test
+
+after_success:
+  - docker build -t stoptime9/multi-client ./client
+  - docker build -t stoptime9/multi-nginx ./nginx
+  - docker build -t stoptime9/multi-server ./server
+  - docker build -t stoptime9/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push stoptime9/multi-client
+  - docker push stoptime9/multi-nginx
+  - docker push stoptime9/multi-server
+  - docker push stoptime9/multi-worker
