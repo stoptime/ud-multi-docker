@@ -24,14 +24,13 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: us-east-2
-  app: multi-docker
-  env: MultiDocker-env
+  app: multi-docker2
+  env: MultiDocker2-env
   bucket_name: elasticbeanstalk-us-east-2-837175974840
-  bucket_path: docker-multi
+  bucket_path: docker-multi2
   on:
     branch: master
 access_key_id: $AWS_ACCESS_KEY_ID
 secret_access_key: $AWS_SECRET_ACCESS_KEY
   
 # bucket stuff is Amazon S3
-# triggering another redeploy
