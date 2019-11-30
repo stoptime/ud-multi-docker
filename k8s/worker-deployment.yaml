@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      compoment: worker
+      component: worker
   template:
     metadata:
       labels:
-        compoment: worker
+        component: worker
     spec:
       containers:
       - name: worker
