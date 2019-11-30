@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      compoment: worker
+  template:
+    metadata:
+      labels:
+        compoment: worker
+    spec:
+      containers:
+      - name: worker
+        image: stoptime9/multi-worker
+        env:
+        - name: REDIS_HOST
+          value: redis-cluster-ip-service
+        - name: REDIS_PORT
+          value: "6379"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+
