@@ -15,5 +15,6 @@ spec:
       containers:
       - name: client
         image: stoptime9/multi-client
+        imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 3000

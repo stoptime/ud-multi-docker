@@ -15,6 +15,7 @@ spec:
       containers:
       - name: server
         image: stoptime9/multi-server
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
         env:
