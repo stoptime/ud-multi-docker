@@ -7,6 +7,5 @@ spec:
   selector:
     component: postgres
   ports:
-    - port: 5432
-      targetPort: 5432
-      nodePort: 5001
+    - port: 5001
+      targetPort: 5001
